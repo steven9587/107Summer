@@ -2,7 +2,7 @@ package practice;
 
 import java.util.Scanner;
 
-//3.一竹桿長 10 公尺，每日截取一半，過多少日後，竹桿長度才會少於20公分。
+//3. 一竹桿長 10 公尺，每日截取一半，過多少日後，竹桿長度才會少於20公分。
 public class three {
     public static void main(String[] args) {
         System.out.print("請輸入竹竿長度(公尺)：");
