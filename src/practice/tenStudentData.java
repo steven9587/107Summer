@@ -1,6 +1,5 @@
 package practice;
 
-import java.util.ArrayList;
 
 public class tenStudentData {
     String name;
@@ -47,11 +46,11 @@ public class tenStudentData {
         this.math = math;
     }
 
-    public int score(){
-        return (math+english+chinese)/3;
+    public int score() {
+        return (math + english + chinese) / 3;
     }
 
-    public int totalscore(){
-        return math+english+chinese;
+    public int totalscore() {
+        return math + english + chinese;
     }
 }
