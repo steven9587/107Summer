@@ -57,10 +57,12 @@ public class fifteen {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println("(1)");
         //print data
         for (int i = 0; i < students.size(); i++) {
             System.out.println("學號：" + students.get(i).getId() + "  平時成績：" + students.get(i).getUsualGrades() + "  其中成績：" + students.get(i).getMidtermExam() + "  期末成績：" + students.get(i).getFinalExam() + "  學期成績：" + students.get(i).getAverage());
         }
+        System.out.println("(2)");
         //print average
         float averageScore = 0;
         float totalScore = 0;
@@ -94,9 +96,21 @@ public class fifteen {
             BigDecimal a2 = new BigDecimal(Float.toString(averageScore));
             double a3 = a1.subtract(a2).floatValue();
             //開平方相加
-            totalStandard += Math.pow(a3,2);
-            standard = (float) Math.sqrt(totalStandard/studentsScores.size());
+            totalStandard += Math.pow(a3, 2);
+            standard = (float) Math.sqrt(totalStandard / studentsScores.size());
         }
-        System.out.println("標準差:"+standard);
+        System.out.println("標準差:" + standard);
+        //print 組距
+        System.out.println("(3)");
+        int statistics = 0;
+        for (int f = 0; f < 5; f++) {
+            statistics = 0;
+            for (int i = 0; i < studentsScores.size(); i++) {
+                if (studentsScores.get(i) >=  f * 20 && studentsScores.get(i) < (f + 1) * 20) {
+                    statistics += 1;
+                }
+            }
+            System.out.println(f*20+"-"+(f + 1) * 20+"："+statistics+"人 "+statistics*100/studentsScores.size()+"%");
+        }
     }
 }

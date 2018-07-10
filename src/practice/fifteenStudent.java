@@ -50,7 +50,7 @@ public class fifteenStudent {
     }
 
     public double getAverage() {
-        average = usualGrades*0.3+midtermExam*0.3+finalExam*0.4;
+        average = usualGrades * 0.3 + midtermExam * 0.3 + finalExam * 0.4;
         return average;
     }
 }
