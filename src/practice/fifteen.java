@@ -35,7 +35,6 @@ import java.util.List;
 public class fifteen {
     public static void main(String[] args) {
         List<fifteenStudent> students = new ArrayList<>();
-        List<Float> studentsScores = new ArrayList<>();
         //read data
         try {
             FileReader fileReader = new FileReader("SemesterGrade.txt");
@@ -45,10 +44,9 @@ public class fifteen {
                 String[] tokens = line.split(",");
                 //collect averages
                 float average = (float) (Integer.parseInt(tokens[1]) * 0.3 + Integer.parseInt(tokens[2]) * 0.3 + Integer.parseInt(tokens[3]) * 0.4);
-                studentsScores.add(average);
                 //collect score & id
                 fifteenStudent s =
-                        new fifteenStudent(Integer.parseInt(tokens[0]), Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]), Integer.parseInt(tokens[3]));
+                        new fifteenStudent(Integer.parseInt(tokens[0]), Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]), Integer.parseInt(tokens[3]),average);
                 students.add(s);
                 line = bufferedReader.readLine();
             }
@@ -64,40 +62,40 @@ public class fifteen {
         }
         System.out.println("(2)");
         //print average
-        float averageScore = 0;
         float totalScore = 0;
-        for (int i = 0; i < studentsScores.size(); i++) {
-            totalScore += studentsScores.get(i);
-            averageScore = totalScore / studentsScores.size();
+        float averageScore = 0;
+        for (int i = 0; i < students.size(); i++) {
+            totalScore += students.get(i).getAverage();
+            averageScore = totalScore / students.size();
         }
         System.out.println("平均成績:" + averageScore);
         //print max
         float maxScore = 0;
-        for (int i = 0; i < studentsScores.size(); i++) {
-            if (studentsScores.get(i) > maxScore) {
-                maxScore = studentsScores.get(i);
+        for (int i = 0; i < students.size(); i++) {
+            if (students.get(i).getAverage() > maxScore) {
+                maxScore = students.get(i).getAverage();
             }
         }
         System.out.println("最高分:" + maxScore);
         //print min
         float minScore = 100;
-        for (int i = 0; i < studentsScores.size(); i++) {
-            if (studentsScores.get(i) < minScore) {
-                minScore = studentsScores.get(i);
+        for (int i = 0; i < students.size(); i++) {
+            if (students.get(i).getAverage() < minScore) {
+                minScore = students.get(i).getAverage();
             }
         }
         System.out.println("最低分:" + minScore);
         //print Standard deviation
         float standard = 0;
         float totalStandard = 0;
-        for (int i = 0; i < studentsScores.size(); i++) {
+        for (int i = 0; i < students.size(); i++) {
             //double  相減
-            BigDecimal a1 = new BigDecimal(Float.toString(studentsScores.get(i)));
+            BigDecimal a1 = new BigDecimal(Float.toString(students.get(i).getAverage()));
             BigDecimal a2 = new BigDecimal(Float.toString(averageScore));
             double a3 = a1.subtract(a2).floatValue();
             //開平方相加
             totalStandard += Math.pow(a3, 2);
-            standard = (float) Math.sqrt(totalStandard / studentsScores.size());
+            standard = (float) Math.sqrt(totalStandard / students.size());
         }
         System.out.println("標準差:" + standard);
         //print 組距
@@ -105,12 +103,12 @@ public class fifteen {
         int statistics = 0;
         for (int f = 0; f < 5; f++) {
             statistics = 0;
-            for (int i = 0; i < studentsScores.size(); i++) {
-                if (studentsScores.get(i) >=  f * 20 && studentsScores.get(i) < (f + 1) * 20) {
+            for (int i = 0; i < students.size(); i++) {
+                if (students.get(i).getAverage() >=  f * 20 && students.get(i).getAverage() < (f + 1) * 20) {
                     statistics += 1;
                 }
             }
-            System.out.println(f*20+"-"+(f + 1) * 20+"："+statistics+"人 "+statistics*100/studentsScores.size()+"%");
+            System.out.println(f*20+"-"+(f + 1) * 20+"："+statistics+"人 "+statistics*100/students.size()+"%");
         }
     }
 }

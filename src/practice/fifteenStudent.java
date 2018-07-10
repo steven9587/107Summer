@@ -1,19 +1,18 @@
 package practice;
 
-import java.util.Collection;
-
 public class fifteenStudent {
     int id;
     int usualGrades;
     int midtermExam;
     int finalExam;
-    double average;
+    float average;
 
-    public fifteenStudent(int id, int usualGrades, int midtermExam, int finalExam) {
+    public fifteenStudent(int id, int usualGrades, int midtermExam, int finalExamm,float average) {
         this.id = id;
         this.usualGrades = usualGrades;
         this.midtermExam = midtermExam;
         this.finalExam = finalExam;
+        this.average = average;
 
     }
 
@@ -49,8 +48,11 @@ public class fifteenStudent {
         this.finalExam = finalExam;
     }
 
-    public double getAverage() {
-        average = usualGrades * 0.3 + midtermExam * 0.3 + finalExam * 0.4;
+    public float getAverage() {
         return average;
+    }
+
+    public void setAverage(float average ) {
+        this.average = average;
     }
 }
